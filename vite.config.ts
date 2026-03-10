@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 import type { Plugin, ViteDevServer } from 'vite';
 import { IncomingMessage, ServerResponse } from 'http';
 import { resolve } from 'path';
@@ -188,6 +189,7 @@ function mockUploadPlugin(): Plugin {
 
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     react({
       jsxImportSource: '@emotion/react',
       babel: {
