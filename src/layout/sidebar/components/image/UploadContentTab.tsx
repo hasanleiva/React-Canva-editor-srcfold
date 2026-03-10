@@ -8,6 +8,7 @@ import apiClient from 'canva-editor/services/base-request';
 import { getBestImageFormat } from 'canva-editor/utils/image';
 import CloseIcon from 'canva-editor/icons/CloseIcon';
 import { useTranslate } from 'canva-editor/contexts/TranslationContext';
+import { useAuth } from 'canva-editor/contexts/AuthContext';
 
 interface UploadContentProps {
   visibility: boolean;
@@ -31,19 +32,19 @@ const UploadContentTab: FC<UploadContentProps> = ({ visibility, onClose }) => {
   const [error, setError] = useState<string | null>(null);
   const [removingImages, setRemovingImages] = useState<Set<string>>(new Set());
   const t = useTranslate();
+  const { user } = useAuth();
+  
   useEffect(() => {
     const fetchUserImages = async () => {
       try {
         setLoading(true);
-        const response = await apiClient.get(
-          `${config.apis.url}${config.apis.fetchUserImages}`
-        );
+        const response = await apiClient.get('/api/images/admin') as any;
         setImages(
-          response.data.map((img: any) => ({
-            id: img.id,
-            documentId: img.documentId,
-            url: getBestImageFormat(img.img).url,
-            type: img.img.mime,
+          response.images.map((img: any) => ({
+            id: img.key,
+            documentId: img.key,
+            url: img.url,
+            type: 'image/jpeg',
           }))
         );
       } catch (err) {
@@ -78,16 +79,36 @@ const UploadContentTab: FC<UploadContentProps> = ({ visibility, onClose }) => {
   };
 
   const uploadImage = async (file: File) => {
+    if (user?.role !== 'admin') {
+      // User role: read into frontend memory only
+      return new Promise<any[]>((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          resolve([{
+            id: Date.now().toString(),
+            documentId: Date.now().toString(),
+            url: e.target?.result as string,
+            type: file.type
+          }]);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Admin role: upload to R2
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('image', file);
 
     try {
-      const response = await apiClient.post<
-        { id: number; documentId: string; img: ImageData }[]
-      >(`${config.apis.url}${config.apis.uploadUserImage}`, formData, {
+      const response = await apiClient.post('/api/images/admin', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
-      });
-      return response.data;
+      }) as any;
+      return [{
+        id: response.key,
+        documentId: response.key,
+        url: response.url,
+        type: file.type
+      }];
     } catch (err) {
       throw new Error(t('sidebar.upload.failedToUploadImage', `Failed to upload ${file.name}`));
     }
@@ -99,12 +120,11 @@ const UploadContentTab: FC<UploadContentProps> = ({ visibility, onClose }) => {
     }
     try {
       setRemovingImages((prev) => new Set(prev).add(imageId));
-      await apiClient.delete(
-        `${config.apis.url}${config.apis.removeUserImage}/${imageId}`,
-        {
-          headers: { 'Content-Type': 'application/json' },
-        }
-      );
+      
+      if (user?.role === 'admin' && imageId.startsWith('admin_images/')) {
+        await apiClient.delete(`/api/images/admin/${imageId}`);
+      }
+      
       setImages((prev) => prev.filter((img) => img.documentId !== imageId));
     } catch (err) {
       setError(t('sidebar.upload.failedToRemoveImage', 'Failed to remove image'));
@@ -141,8 +161,8 @@ const UploadContentTab: FC<UploadContentProps> = ({ visibility, onClose }) => {
               {
                 id: image.id,
                 documentId: image.documentId,
-                url: getBestImageFormat(image.img).url,
-                type: image.img.mime,
+                url: image.url,
+                type: image.type,
               },
             ]);
           });

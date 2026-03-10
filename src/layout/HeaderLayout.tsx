@@ -19,6 +19,8 @@ import styled from '@emotion/styled';
 import ExportIcon from 'canva-editor/icons/ExportIcon';
 import { useTranslate } from 'canva-editor/contexts/TranslationContext';
 
+import ProfileMenu from '../components/auth/ProfileMenu';
+
 const Button = styled('button')`
   display: flex;
   align-items: center;
@@ -182,17 +184,7 @@ const HeaderLayout: ForwardRefRenderFunction<
               </div>{' '}
               <span css={{ marginRight: 4, marginLeft: 4 }}>{t('header.export', 'Export')}</span>
             </Button>
-            <Button
-              onClick={() => {
-                console.log('Login clicked');
-              }}
-              css={{
-                border: '1px solid hsla(0,0%,100%,.4)',
-                padding: '8px 16px',
-              }}
-            >
-              <span css={{ marginRight: 4, marginLeft: 4 }}>Login</span>
-            </Button>
+            <ProfileMenu />
           </>
         )}
       </div>
