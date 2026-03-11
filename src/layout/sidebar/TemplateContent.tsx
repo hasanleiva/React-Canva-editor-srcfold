@@ -17,6 +17,7 @@ interface Template {
 }
 const TemplateContent: FC<{ onClose: () => void }> = ({ onClose }) => {
   const [templates, setTemplates] = useState<Template[]>([]);
+  const [r2Templates, setR2Templates] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { actions, activePage, config } = useEditor((state, config) => ({
     config,
@@ -28,27 +29,46 @@ const TemplateContent: FC<{ onClose: () => void }> = ({ onClose }) => {
   const [keyword, setKeyword] = useState('');
   const isMobile = useMobileDetect();
   const t = useTranslate();
+
+  const loadR2Templates = async () => {
+    try {
+      const res = await axios.get('/api/templates/list');
+      if (res.data.success) {
+        setR2Templates(res.data.templates);
+      }
+    } catch (err) {
+      console.error('Failed to load R2 templates', err);
+    }
+  };
+
   const loadData = useCallback(
     async (offset = 0, kw = '') => {
       dataRef.current = true;
       setIsLoading(true);
-      const res = await axios.get<SearchResponse<Template>>(
-        `${config.apis.url}${config.apis.searchTemplates}?ps=18&pi=${offset}&kw=${kw}`
-      );
+      try {
+        const res = await axios.get<SearchResponse<Template>>(
+          `${config.apis.url}${config.apis.searchTemplates}?ps=18&pi=${offset}&kw=${kw}`
+        );
 
-      if (res.data.data) {
-        setTemplates((templates) => [...templates, ...res.data.data]);
+        if (res.data.data) {
+          setTemplates((templates) => [...templates, ...res.data.data]);
+        }
+        if (res.data.data.length > 0) {
+          dataRef.current = false;
+        }
+      } catch (err) {
+        console.error(err);
       }
       setIsLoading(false);
-      if (res.data.data.length > 0) {
-        dataRef.current = false;
-      }
     },
     [setIsLoading]
   );
 
   useEffect(() => {
     loadData(offset, keyword);
+    if (offset === 0) {
+      loadR2Templates();
+    }
   }, [offset, keyword]);
 
   useEffect(() => {
@@ -98,6 +118,18 @@ const TemplateContent: FC<{ onClose: () => void }> = ({ onClose }) => {
       onClose();
     }
   };
+
+  const loadR2Template = async (id: string) => {
+    try {
+      const res = await axios.get(`/api/templates/get/${id}`);
+      if (res.data.success) {
+        addPages(res.data.content);
+      }
+    } catch (err) {
+      console.error('Failed to load template', err);
+    }
+  };
+
   return (
     <div
       css={{
@@ -146,6 +178,26 @@ const TemplateContent: FC<{ onClose: () => void }> = ({ onClose }) => {
             gridGap: 8,
           }}
         >
+          {r2Templates.map((id) => (
+            <div
+              key={id}
+              css={{
+                cursor: 'pointer',
+                padding: '16px',
+                background: '#f0f0f0',
+                borderRadius: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+                wordBreak: 'break-all',
+                minHeight: '100px',
+              }}
+              onClick={() => loadR2Template(id)}
+            >
+              {id}
+            </div>
+          ))}
           {templates.map((item, index) => (
             <div
               key={index}

@@ -82,11 +82,13 @@ const UploadContentTab: FC<UploadContentProps> = ({ visibility, onClose }) => {
     formData.append('file', file);
 
     try {
-      const response = await apiClient.post<
-        { id: number; documentId: string; img: ImageData }[]
-      >(`${config.apis.url}${config.apis.uploadUserImage}`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
+      const response = await apiClient.post(
+        `${config.apis.url}${config.apis.uploadUserImage}`,
+        formData,
+        {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        }
+      );
       return response.data;
     } catch (err) {
       throw new Error(t('sidebar.upload.failedToUploadImage', `Failed to upload ${file.name}`));
@@ -99,12 +101,14 @@ const UploadContentTab: FC<UploadContentProps> = ({ visibility, onClose }) => {
     }
     try {
       setRemovingImages((prev) => new Set(prev).add(imageId));
-      await apiClient.delete(
-        `${config.apis.url}${config.apis.removeUserImage}/${imageId}`,
-        {
-          headers: { 'Content-Type': 'application/json' },
-        }
-      );
+      if (imageId.startsWith('img_')) {
+        await apiClient.delete(
+          `${config.apis.url}${config.apis.removeUserImage}/${imageId}`,
+          {
+            headers: { 'Content-Type': 'application/json' },
+          }
+        );
+      }
       setImages((prev) => prev.filter((img) => img.documentId !== imageId));
     } catch (err) {
       setError(t('sidebar.upload.failedToRemoveImage', 'Failed to remove image'));
@@ -134,7 +138,20 @@ const UploadContentTab: FC<UploadContentProps> = ({ visibility, onClose }) => {
     for (const file of imageFiles) {
       try {
         const uploadedImage = await uploadImage(file);
-        if (uploadedImage.length > 0) {
+        if (uploadedImage.success) {
+          const url = uploadedImage.url || uploadedImage.data;
+          const newId = Date.now().toString();
+          setImages((prevState) => [
+            ...prevState,
+            {
+              id: Date.now(),
+              documentId: newId,
+              url: url,
+              type: file.type,
+            },
+          ]);
+        } else if (Array.isArray(uploadedImage) && uploadedImage.length > 0) {
+          // Fallback for old mock API
           uploadedImage.forEach((image) => {
             setImages((prevState) => [
               ...prevState,
@@ -148,7 +165,7 @@ const UploadContentTab: FC<UploadContentProps> = ({ visibility, onClose }) => {
           });
         }
         processedCount++;
-      } catch (err) {
+      } catch (err: any) {
         setError(err.message);
         processedCount++;
       } finally {

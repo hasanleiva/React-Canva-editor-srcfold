@@ -28,6 +28,8 @@ import HamburgerIcon from 'canva-editor/icons/HamburgerIcon';
 import useMobileDetect from 'canva-editor/hooks/useMobileDetect';
 import TrashIcon from 'canva-editor/icons/TrashIcon';
 import { useTranslate } from 'canva-editor/contexts/TranslationContext';
+import { useAuth } from '../../../contexts/AuthContext';
+import axios from 'axios';
 
 interface Props {
   designName: string;
@@ -38,6 +40,7 @@ const HeaderFileMenu: FC<Props> = ({ designName, onRemove }) => {
   const [openPreview, setOpenPreview] = useState(false);
   const uploadRef = useRef<HTMLInputElement>(null);
   const isMobile = useMobileDetect();
+  const { user } = useAuth();
   const { actions, query, activePage, pageSize, isPageLocked } = useEditor(
     (state) => ({
       activePage: state.activePage,
@@ -137,13 +140,22 @@ const HeaderFileMenu: FC<Props> = ({ designName, onRemove }) => {
       ],
     },
     { label: 'Divider', type: 'divider' },
-    {
+    ...(user?.role === 'admin' ? [{
       label: t('header.save', 'Save'),
-      type: 'normal',
+      type: 'normal' as const,
       icon: <SyncedIcon />,
-      shortcut: t('header.allChangesSaved', 'All changes saved'),
-      action: () => {},
-    },
+      action: async () => {
+        try {
+          const content = pack(query.serialize(), dataMapping)[0];
+          const id = designName || `template_${Date.now()}`;
+          await axios.post('/api/templates/save', { id, content });
+          alert('Saved successfully!');
+        } catch (err) {
+          console.error(err);
+          alert('Failed to save');
+        }
+      },
+    }] : []),
     {
       label: t('header.preview', 'Preview'),
       type: 'normal',

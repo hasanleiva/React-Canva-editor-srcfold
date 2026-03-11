@@ -34,7 +34,12 @@ export async function onRequestPost(context) {
     } else {
       // User role: save in memory only (return base64)
       const buffer = await file.arrayBuffer();
-      const base64 = Buffer.from(buffer).toString('base64');
+      const bytes = new Uint8Array(buffer);
+      let binary = '';
+      for (let i = 0; i < bytes.byteLength; i++) {
+        binary += String.fromCharCode(bytes[i]);
+      }
+      const base64 = btoa(binary);
       return new Response(JSON.stringify({ success: true, data: `data:${file.type};base64,${base64}` }), {
         status: 200,
         headers: { 'Content-Type': 'application/json' }
