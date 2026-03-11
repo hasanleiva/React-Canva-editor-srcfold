@@ -134,29 +134,6 @@ const TemplateContent: FC<{ onClose: () => void }> = ({ onClose }) => {
       }}
     >
       {!isMobile && <CloseSidebarButton onClose={onClose} />}
-      <div>
-        <TemplateSearchBox
-          searchString={keyword}
-          onStartSearch={handleSearch}
-        />
-        <div css={{ paddingTop: 8, marginBottom: 8 }}>
-          <HorizontalCarousel>
-            {config.templateKeywordSuggestions &&
-              config.templateKeywordSuggestions.split(',').map((kw) => (
-                <div key={kw} className='carousel-item'>
-                  <OutlineButton
-                    onClick={() => {
-                      setKeyword(kw);
-                      handleSearch(kw);
-                    }}
-                  >
-                    {kw}
-                  </OutlineButton>
-                </div>
-              ))}
-          </HorizontalCarousel>
-        </div>
-      </div>
       <div
         css={{ flexDirection: 'column', overflowY: 'auto', display: 'flex' }}
       >
