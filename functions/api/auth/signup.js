@@ -16,8 +16,8 @@ export async function onRequestPost(context) {
     }
 
     const passwordHash = await bcrypt.hash(password, 10);
-    await env.DB.prepare("INSERT INTO users (email, password_hash, name) VALUES (?, ?, ?)")
-      .bind(email, passwordHash, name)
+    await env.DB.prepare("INSERT INTO users (email, password_hash, name, role) VALUES (?, ?, ?, ?)")
+      .bind(email, passwordHash, name, 'user')
       .run();
 
     const token = `tok_${Date.now()}_${Math.random().toString(36).substring(2)}`;

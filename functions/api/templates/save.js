@@ -1,4 +1,4 @@
-export async function onRequestGet(context) {
+export async function onRequestPost(context) {
   try {
     const { request, env } = context;
     const cookie = request.headers.get('Cookie') || '';
@@ -15,14 +15,18 @@ export async function onRequestGet(context) {
       return new Response(JSON.stringify({ error: 'Invalid session' }), { status: 401 });
     }
 
-    const email = session.email;
-    const user = await env.DB.prepare("SELECT * FROM users WHERE email = ?").bind(email).first();
+    const user = await env.DB.prepare("SELECT role FROM users WHERE email = ?").bind(session.email).first();
 
-    if (!user) {
-      return new Response(JSON.stringify({ error: 'User not found' }), { status: 401 });
+    if (!user || user.role !== 'admin') {
+      return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403 });
     }
 
-    return new Response(JSON.stringify({ success: true, user: { email: user.email, name: user.name, role: user.role } }), {
+    const body = await request.json();
+    const { id, content } = body;
+    
+    await env.R2_BUCKET.put(`templates/${id}.json`, JSON.stringify(content));
+
+    return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });

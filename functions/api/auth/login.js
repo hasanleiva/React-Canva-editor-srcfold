@@ -24,7 +24,7 @@ export async function onRequestPost(context) {
     headers.set('Set-Cookie', `auth_token=${token}; Path=/; HttpOnly; Secure; SameSite=Lax`);
     headers.set('Content-Type', 'application/json');
 
-    return new Response(JSON.stringify({ success: true, user: { email, name: user.name } }), {
+    return new Response(JSON.stringify({ success: true, user: { email: user.email, name: user.name, role: user.role } }), {
       status: 200,
       headers
     });
