@@ -99,17 +99,9 @@ const TemplateContent: FC<{ onClose: () => void }> = ({ onClose }) => {
 
   const addPages = async (data: Array<SerializedPage> | SerializedPage) => {
     try {
-      if (Array.isArray(data)) {
-        data.forEach((page, idx) => {
-          const serializedData: SerializedPage = unpack(page);
-          actions.changePageSize(serializedData.layers.ROOT.props.boxSize as PageSize);
-          actions.setPage(activePage + idx, serializedData);
-        });
-      } else {
-        const serializedData: SerializedPage = unpack(data);
-        actions.changePageSize(serializedData.layers.ROOT.props.boxSize as PageSize);
-        actions.setPage(activePage, serializedData);
-      }
+      const unpackedData = unpack(data);
+      const pages = Array.isArray(unpackedData) ? unpackedData : [unpackedData];
+      actions.setData(pages);
     } catch (err) {
       console.warn('Something went wrong!');
       console.log(err);

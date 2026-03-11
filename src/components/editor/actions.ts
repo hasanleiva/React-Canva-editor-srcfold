@@ -383,6 +383,7 @@ export const ActionMethods = (state: EditorState) => {
       state.activePage = 0;
       state.selectedLayers = {};
       state.hoveredLayer = {};
+      state.controlBox = undefined;
       const pages: Page[] = [];
       const decodeLayer = (
         serializedLayer: SerializedLayer,
@@ -479,6 +480,7 @@ export const ActionMethods = (state: EditorState) => {
         page.layers[layerId] = layer;
       });
       state.selectedLayers = {};
+      state.controlBox = undefined;
       state.pages[pageIndex] = page;
     },
     setPageName(pageIndex: number, name: string) {
