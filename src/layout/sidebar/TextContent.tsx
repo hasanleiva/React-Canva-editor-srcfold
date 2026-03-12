@@ -172,20 +172,6 @@ const TextContent: FC<{ onClose: () => void }> = ({ onClose }) => {
     >
       {!isMobile && <CloseSidebarButton onClose={onClose} />}
       <div
-        css={{
-          marginBottom: 16,
-        }}
-      >
-        <TextSearchBox onStartSearch={handleSearch} />
-      </div>
-      <div css={{ marginBottom: 16 }}>
-        <Button
-          onClick={() => handleAddNewText()}
-          text={t('sidebar.addATextBox', 'Add a text box')}
-          style={{ width: '100%' }}
-        />
-      </div>
-      <div
         ref={scrollRef}
         css={{
           flexDirection: 'column',
