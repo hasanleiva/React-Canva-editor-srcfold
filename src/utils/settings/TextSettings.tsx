@@ -217,7 +217,7 @@ const TextSettings: FC<TextSettingsProps> = ({ layers }) => {
   const getUniqueFontFamily = (editorAttrs: Record<string, string[]>) =>
     uniqBy(
       getFontFamily(editorAttrs).map((font) => {
-        const usedFont = usedFontObj[font] || fontObj[font];
+        const usedFont = fontObj[font] || usedFontObj[font];
         if (!usedFont) console.log('Font not found: ' + font);
         return {
           family: usedFont.family,
