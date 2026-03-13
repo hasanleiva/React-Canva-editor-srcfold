@@ -6,7 +6,7 @@ export async function onRequest(context) {
     return new Response("Not found", { status: 404 });
   }
 
-  const key = pathArray.join('/');
+  const key = pathArray.map(decodeURIComponent).join('/');
 
   if (!env.FONTS_BUCKET) {
     return new Response("FONTS_BUCKET not bound in Cloudflare settings", { status: 500 });
