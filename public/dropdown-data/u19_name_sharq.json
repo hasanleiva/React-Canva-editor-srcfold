@@ -1,52 +1,42 @@
 [
   {
     "id": "option-1",
-    "text": "Andijon",
-    "logo": "#"
+    "text": "Andijon"
   },
   {
     "id": "option-2",
-    "text": "Bunyodkor",
-    "logo": "#"
+    "text": "Bunyodkor"
   },
   {
     "id": "option-3",
-    "text": "FarDU",
-    "logo": "#"
+    "text": "FarDU"
   },
   {
     "id": "option-4",
-    "text": "Navbahor",
-    "logo": "#"
+    "text": "Navbahor"
   },
   {
     "id": "option-5",
-    "text": "Neftchi",
-    "logo": "#"
+    "text": "Neftchi"
   },
   {
     "id": "option-6",
-    "text": "OKMK",
-    "logo": "#"
+    "text": "OKMK"
   },
   {
     "id": "option-7",
-    "text": "Qo'qon-1912",
-    "logo": "#"
+    "text": "Qo'qon-1912"
   },
   {
     "id": "option-8",
-    "text": "Respublika FA",
-    "logo": "#"
+    "text": "Respublika FA"
   },
   {
     "id": "option-9",
-    "text": "G'azalkent",
-    "logo": "#"
+    "text": "G'azalkent"
   },
   {
     "id": "option-10",
-    "text": "Yaypan",
-    "logo": "#"
+    "text": "Yaypan"
   }
 ]
