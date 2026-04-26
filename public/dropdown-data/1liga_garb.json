@@ -1,0 +1,47 @@
+[
+  {
+    "id": "option-1",
+    "text": "Azur",
+    "logo": "/dropdown-data/logos/1liga/Aral.png"
+  },
+  {
+    "id": "option-2",
+    "text": "Buxoro",
+    "logo": "/dropdown-data/logos/1liga/Aral.png"
+  },
+  {
+    "id": "option-3",
+    "text": "Nasaf FJ",
+    "logo": "/dropdown-data/logos/1liga/Aral.png"
+  },
+  {
+    "id": "option-4",
+    "text": "Navoiy FA",
+    "logo": "/dropdown-data/logos/1liga/Aral.png"
+  },
+  {
+    "id": "option-5",
+    "text": "Qashqadaryo FA",
+    "logo": "/dropdown-data/logos/1liga/Aral.png"
+  },
+  {
+    "id": "option-6",
+    "text": "Qoraqalpog'iston FA",
+    "logo": "/dropdown-data/logos/1liga/Aral.png"
+  },
+  {
+    "id": "option-7",
+    "text": "Samarqand FA",
+    "logo": "/dropdown-data/logos/1liga/Aral.png"
+  },
+  {
+    "id": "option-8",
+    "text": "Surxondaryo FA",
+    "logo": "/dropdown-data/logos/1liga/Aral.png"
+  },
+  {
+    "id": "option-9",
+    "text": "Xorazm FA",
+    "logo": "/dropdown-data/logos/1liga/Aral.png"
+  }
+]
