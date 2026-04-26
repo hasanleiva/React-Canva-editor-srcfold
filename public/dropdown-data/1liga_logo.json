@@ -1,0 +1,176 @@
+[
+  {
+    "id": "option-1",
+    "text": "Azur",
+    "logo": "/dropdown-data/logos/1liga_garb/aral.png",
+    "group": "garb"
+  },
+  {
+    "id": "option-2",
+    "text": "Buxoro",
+    "logo": "/dropdown-data/logos/1liga_garb/azur.png",
+    "group": "garb"
+  },
+  {
+    "id": "option-3",
+    "text": "Nasaf FJ",
+    "logo": "/dropdown-data/logos/1liga_garb/buxoro.png",
+    "group": "garb"
+  },
+  {
+    "id": "option-4",
+    "text": "Navoiy FA",
+    "logo": "/dropdown-data/logos/1liga_garb/nasaf-fj.png",
+    "group": "garb"
+  },
+  {
+    "id": "option-5",
+    "text": "Qashqadaryo FA",
+    "logo": "/dropdown-data/logos/1liga_garb/navoiy.png",
+    "group": "garb"
+  },
+  {
+    "id": "option-6",
+    "text": "Qoraqalpog'iston FA",
+    "logo": "/dropdown-data/logos/1liga_garb/qashqadaryo.png",
+    "group": "garb"
+  },
+  {
+    "id": "option-7",
+    "text": "Samarqand FA",
+    "logo": "/dropdown-data/logos/1liga_garb/samarqand.png",
+    "group": "garb"
+  },
+  {
+    "id": "option-8",
+    "text": "Surxondaryo FA",
+    "logo": "/dropdown-data/logos/1liga_garb/surxondaryo.png",
+    "group": "garb"
+  },
+  {
+    "id": "option-9",
+    "text": "Xorazm FA",
+    "logo": "/dropdown-data/logos/1liga_garb/xorazm.png",
+    "group": "garb"
+  },
+  {
+    "id": "option-10",
+    "text": "Ahmedov",
+    "logo": "/dropdown-data/logos/1liga_markaz/ahmedov.png",
+    "group": "markaz"
+  },
+  {
+    "id": "option-11",
+    "text": "Bunyodkor",
+    "logo": "/dropdown-data/logos/1liga_markaz/bunyodkor-fj.png",
+    "group": "markaz"
+  },
+  {
+    "id": "option-12",
+    "text": "Guliston",
+    "logo": "/dropdown-data/logos/1liga_markaz/guliston.png",
+    "group": "markaz"
+  },
+  {
+    "id": "option-13",
+    "text": "Jizzax FA",
+    "logo": "/dropdown-data/logos/1liga_markaz/jizzax.png",
+    "group": "markaz"
+  },
+  {
+    "id": "option-14",
+    "text": "Lokomotiv BFK",
+    "logo": "/dropdown-data/logos/1liga_markaz/loko-bfk.png",
+    "group": "markaz"
+  },
+  {
+    "id": "option-15",
+    "text": "Oqtepa",
+    "logo": "/dropdown-data/logos/1liga_markaz/oqtepa.png",
+    "group": "markaz"
+  },
+  {
+    "id": "option-16",
+    "text": "Respublika FJ",
+    "logo": "/dropdown-data/logos/1liga_markaz/respublika-fj.png",
+    "group": "markaz"
+  },
+  {
+    "id": "option-17",
+    "text": "Sirdaryo FA",
+    "logo": "/dropdown-data/logos/1liga_markaz/sirdaryo.png",
+    "group": "markaz"
+  },
+  {
+    "id": "option-18",
+    "text": "Toshkent VFA",
+    "logo": "/dropdown-data/logos/1liga_markaz/toshkent-vfa.png",
+    "group": "markaz"
+  },
+  {
+    "id": "option-19",
+    "text": "Sherdor",
+    "logo": "/dropdown-data/logos/1liga_markaz/sherdor.png",
+    "group": "markaz"
+  },
+  {
+    "id": "option-20",
+    "text": "Andijon FA",
+    "logo": "/dropdown-data/logos/1liga_sharq/andijon.png",
+    "group": "sharq"
+  },
+  {
+    "id": "option-21",
+    "text": "Barkamol",
+    "logo": "/dropdown-data/logos/1liga_sharq/barkamol.png",
+    "group": "sharq"
+  },
+  {
+    "id": "option-22",
+    "text": "Do'stlik",
+    "logo": "/dropdown-data/logos/1liga_sharq/dostlik.png",
+    "group": "sharq"
+  },
+  {
+    "id": "option-23",
+    "text": "Farg'ona FA",
+    "logo": "/dropdown-data/logos/1liga_sharq/fargona.png",
+    "group": "sharq"
+  },
+  {
+    "id": "option-24",
+    "text": "Havokand",
+    "logo": "/dropdown-data/logos/1liga_sharq/havokand.png",
+    "group": "sharq"
+  },
+  {
+    "id": "option-25",
+    "text": "Lokomotiv FJ",
+    "logo": "/dropdown-data/logos/1liga_sharq/lokomotiv-fj.png",
+    "group": "sharq"
+  },
+  {
+    "id": "option-26",
+    "text": "Namangan FA",
+    "logo": "/dropdown-data/logos/1liga_sharq/namangan.png",
+    "group": "sharq"
+  },
+  {
+    "id": "option-27",
+    "text": "OKMK Semurg'",
+    "logo": "/dropdown-data/logos/1liga_sharq/okmk-semurg.png",
+    "group": "sharq"
+  },
+  {
+    "id": "option-28",
+    "text": "Sementchi",
+    "logo": "/dropdown-data/logos/1liga_sharq/sementchi.png",
+    "group": "sharq"
+  },
+  {
+    "id": "option-29",
+    "text": "Toshkent FA",
+    "logo": "/dropdown-data/logos/1liga_sharq/toshkent-fa.png",
+    "group": "sharq"
+  }
+]

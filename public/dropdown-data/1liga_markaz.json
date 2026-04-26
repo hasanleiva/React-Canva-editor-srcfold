@@ -1,0 +1,52 @@
+[
+  {
+    "id": "option-1",
+    "text": "Ahmedov",
+    "logo": "/dropdown-data/logos/1liga_markaz/ahmedov.png"
+  },
+  {
+    "id": "option-2",
+    "text": "Bunyodkor",
+    "logo": "/dropdown-data/logos/1liga_markaz/bunyodkor-fj.png"
+  },
+  {
+    "id": "option-3",
+    "text": "Guliston",
+    "logo": "/dropdown-data/logos/1liga_markaz/guliston.png"
+  },
+  {
+    "id": "option-4",
+    "text": "Jizzax FA",
+    "logo": "/dropdown-data/logos/1liga_markaz/jizzax.png"
+  },
+  {
+    "id": "option-5",
+    "text": "Lokomotiv BFK",
+    "logo": "/dropdown-data/logos/1liga_markaz/loko-bfk.png"
+  },
+  {
+    "id": "option-6",
+    "text": "Oqtepa",
+    "logo": "/dropdown-data/logos/1liga_markaz/oqtepa.png"
+  },
+  {
+    "id": "option-7",
+    "text": "Respublika FJ",
+    "logo": "/dropdown-data/logos/1liga_markaz/respublika-fj.png"
+  },
+  {
+    "id": "option-8",
+    "text": "Sirdaryo FA",
+    "logo": "/dropdown-data/logos/1liga_markaz/sirdaryo.png"
+  },
+  {
+    "id": "option-9",
+    "text": "Toshkent VFA",
+    "logo": "/dropdown-data/logos/1liga_markaz/toshkent-vfa.png"
+  },
+  {
+    "id": "option-10",
+    "text": "Sherdor",
+    "logo": "/dropdown-data/logos/1liga_markaz/sherdor.png"
+  }
+]

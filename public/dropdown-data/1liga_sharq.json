@@ -1,0 +1,52 @@
+[
+  {
+    "id": "option-1",
+    "text": "Andijon FA",
+    "logo": "/dropdown-data/logos/1liga_sharq/andijon.png"
+  },
+  {
+    "id": "option-2",
+    "text": "Barkamol",
+    "logo": "/dropdown-data/logos/1liga_sharq/barkamol.png"
+  },
+  {
+    "id": "option-3",
+    "text": "Do'stlik",
+    "logo": "/dropdown-data/logos/1liga_sharq/dostlik.png"
+  },
+  {
+    "id": "option-4",
+    "text": "Farg'ona FA",
+    "logo": "/dropdown-data/logos/1liga_sharq/fargona.png"
+  },
+  {
+    "id": "option-5",
+    "text": "Havokand",
+    "logo": "/dropdown-data/logos/1liga_sharq/havokand.png"
+  },
+  {
+    "id": "option-6",
+    "text": "Lokomotiv FJ",
+    "logo": "/dropdown-data/logos/1liga_sharq/lokomotiv-fj.png"
+  },
+  {
+    "id": "option-7",
+    "text": "Namangan FA",
+    "logo": "/dropdown-data/logos/1liga_sharq/namangan.png"
+  },
+  {
+    "id": "option-8",
+    "text": "OKMK Semurg'",
+    "logo": "/dropdown-data/logos/1liga_sharq/okmk-semurg.png"
+  },
+  {
+    "id": "option-9",
+    "text": "Sementchi",
+    "logo": "/dropdown-data/logos/1liga_sharq/sementchi.png"
+  },
+  {
+    "id": "option-10",
+    "text": "Toshkent FA",
+    "logo": "/dropdown-data/logos/1liga_sharq/toshkent-fa.png"
+  }
+]
