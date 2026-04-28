@@ -2,37 +2,37 @@
   {
     "id": "option-1",
     "text": "Azur",
-    "logo": "/dropdown-data/logos/1liga_garb/aral.png",
+    "logo": "/dropdown-data/logos/1liga_garb/azur.png",
     "group": "garb"
   },
   {
     "id": "option-2",
     "text": "Buxoro",
-    "logo": "/dropdown-data/logos/1liga_garb/azur.png",
+    "logo": "/dropdown-data/logos/1liga_garb/buxoro.png",
     "group": "garb"
   },
   {
     "id": "option-3",
     "text": "Nasaf FJ",
-    "logo": "/dropdown-data/logos/1liga_garb/buxoro.png",
+    "logo": "/dropdown-data/logos/1liga_garb/nasaf-fj.png",
     "group": "garb"
   },
   {
     "id": "option-4",
     "text": "Navoiy FA",
-    "logo": "/dropdown-data/logos/1liga_garb/nasaf-fj.png",
+    "logo": "/dropdown-data/logos/1liga_garb/navoiy.png",
     "group": "garb"
   },
   {
     "id": "option-5",
     "text": "Qashqadaryo FA",
-    "logo": "/dropdown-data/logos/1liga_garb/navoiy.png",
+    "logo": "/dropdown-data/logos/1liga_garb/qashqadaryo.png",
     "group": "garb"
   },
   {
     "id": "option-6",
     "text": "Qoraqalpog'iston FA",
-    "logo": "/dropdown-data/logos/1liga_garb/qashqadaryo.png",
+    "logo": "/dropdown-data/logos/1liga_garb/aral.png",
     "group": "garb"
   },
   {
