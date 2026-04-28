@@ -126,6 +126,47 @@ const LayerSidebar: ForwardRefRenderFunction<
           >
             Layers
           </p>
+          {user?.role === 'admin' && (
+            <button
+              onClick={() => {
+                actions.addLayer({
+                  type: { resolvedName: 'FrameLayer' },
+                  props: {
+                    elementType: 'divider',
+                    name: 'Divider',
+                    boxSize: { width: 400, height: 4 },
+                    color: 'transparent',
+                    clipPath: '',
+                    gradientBackground: null,
+                    image: null,
+                    rotate: 0,
+                    scale: 1,
+                  } as any,
+                } as any);
+              }}
+              css={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 4,
+                padding: '4px 10px',
+                marginRight: 8,
+                backgroundColor: '#f3f4f6',
+                border: '1px solid #d1d5db',
+                borderRadius: 6,
+                fontSize: 12,
+                fontWeight: 600,
+                color: '#374151',
+                cursor: 'pointer',
+                flexShrink: 0,
+                '&:hover': {
+                  backgroundColor: '#e5e7eb',
+                },
+              }}
+            >
+              <span css={{ fontSize: 14, lineHeight: 1 }}>—</span>
+              <span>Add Divider</span>
+            </button>
+          )}
           <div
             css={{
               fontSize: 20,

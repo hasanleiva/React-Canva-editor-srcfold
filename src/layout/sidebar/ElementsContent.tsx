@@ -314,7 +314,8 @@ const DropdownItemComponent: FC<{
 
 type UnifiedItem =
   | { kind: 'text'; layer: ReturnType<typeof Object.values>[0] }
-  | { kind: 'dropdown'; groupKey: string; layers: ReturnType<typeof Object.values>[0][] };
+  | { kind: 'dropdown'; groupKey: string; layers: ReturnType<typeof Object.values>[0][] }
+  | { kind: 'divider'; layerId: string };
 
 const ElementsContent: FC<{ onClose: () => void }> = ({ onClose }) => {
   const { layers, actions, activePage, pageSize } = useEditor((state) => ({
@@ -551,6 +552,8 @@ const ElementsContent: FC<{ onClose: () => void }> = ({ onClose }) => {
         seenDropdownKeys.add(groupKey);
         unifiedItems.push({ kind: 'dropdown', groupKey, layers: dropdownGroups[groupKey] || [] });
       }
+    } else if (elementType === 'divider') {
+      unifiedItems.push({ kind: 'divider', layerId: id });
     }
   }
 
@@ -626,7 +629,21 @@ const ElementsContent: FC<{ onClose: () => void }> = ({ onClose }) => {
         {unifiedItems.length > 0 && (
           <CollapsibleSection title="ELEMENTS" dotColor="#3b82f6">
             {unifiedItems.map((item) => {
-              if (item.kind === 'text') {
+              if (item.kind === 'divider') {
+                return (
+                  <div
+                    key={`divider-${item.layerId}`}
+                    css={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      padding: '2px 0',
+                      margin: '4px 0',
+                    }}
+                  >
+                    <div css={{ flex: 1, height: 1, backgroundColor: '#d1d5db' }} />
+                  </div>
+                );
+              } else if (item.kind === 'text') {
                 const { layer } = item;
                 const name = layer.data.props.name || (layer.data.props as any).a;
                 const text = layer.data.props.text || (layer.data.props as any).v;

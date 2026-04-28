@@ -155,13 +155,22 @@ const SortableItem = SortableElement(
             <div className='drag-icon'>
               <MoreVertIcon />
             </div>
-            <div css={{ minWidth: 0, flexGrow: 1 }}>
-              <ReverseTransformLayer layer={item} />
-            </div>
-            {isGroupLayer(item) && (
-              <div css={{ flexShrink: 0, fontSize: 24 }}>
-                <GroupingIcon />
+            {(item.data.props.elementType || (item.data.props as any).aq) === 'divider' ? (
+              <div css={{ minWidth: 0, flexGrow: 1, display: 'flex', alignItems: 'center', gap: 8, paddingRight: 8 }}>
+                <div css={{ flex: 1, height: 2, borderRadius: 1, background: 'repeating-linear-gradient(90deg, #9ca3af 0px, #9ca3af 6px, transparent 6px, transparent 12px)' }} />
+                <span css={{ fontSize: 11, color: '#6b7280', fontWeight: 600, whiteSpace: 'nowrap' }}>DIVIDER</span>
               </div>
+            ) : (
+              <>
+                <div css={{ minWidth: 0, flexGrow: 1 }}>
+                  <ReverseTransformLayer layer={item} />
+                </div>
+                {isGroupLayer(item) && (
+                  <div css={{ flexShrink: 0, fontSize: 24 }}>
+                    <GroupingIcon />
+                  </div>
+                )}
+              </>
             )}
           </div>
           {user?.role === 'admin' && (() => {
@@ -198,6 +207,7 @@ const SortableItem = SortableElement(
                 <option value="input text">Input Text</option>
                 <option value="image">Image</option>
                 <option value="dropdown">Dropdown</option>
+                <option value="divider">Divider</option>
               </select>
               {elementType === 'dropdown' && (
                 <input
