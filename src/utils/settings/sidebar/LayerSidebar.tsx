@@ -8,6 +8,7 @@ import React, {
 } from 'react';
 import axios from 'axios';
 import reverse from 'lodash/reverse';
+import { generateRandomID } from 'canva-editor/utils/identityGenerator';
 import Sidebar, { SidebarProps } from './Sidebar';
 import ReverseTransformLayer from './layer/ReverseTransformLayer';
 import { useEditor, useSelectedLayers } from 'canva-editor/hooks';
@@ -129,20 +130,30 @@ const LayerSidebar: ForwardRefRenderFunction<
           {user?.role === 'admin' && (
             <button
               onClick={() => {
-                actions.addLayer({
-                  type: { resolvedName: 'FrameLayer' },
-                  props: {
-                    elementType: 'divider',
-                    name: 'Divider',
-                    boxSize: { width: 400, height: 4 },
-                    color: 'transparent',
-                    clipPath: '',
-                    gradientBackground: null,
-                    image: null,
-                    rotate: 0,
-                    scale: 1,
-                  } as any,
-                } as any);
+                const dividerId = generateRandomID();
+                actions.addLayerTree({
+                  rootId: dividerId,
+                  layers: {
+                    [dividerId]: {
+                      type: { resolvedName: 'FrameLayer' },
+                      props: {
+                        elementType: 'divider',
+                        name: 'Divider',
+                        boxSize: { width: 400, height: 4 },
+                        position: { x: 0, y: 0 },
+                        color: 'transparent',
+                        clipPath: '',
+                        gradientBackground: null,
+                        image: null,
+                        rotate: 0,
+                        scale: 1,
+                      } as any,
+                      locked: false,
+                      child: [],
+                      parent: 'ROOT',
+                    },
+                  },
+                });
               }}
               css={{
                 display: 'flex',
