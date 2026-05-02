@@ -11,7 +11,8 @@
       "Bash(powershell -NonInteractive -Command \"Set-Location ''C:\\\\MYFILES\\\\Github_repo\\\\React-Canva-editor-srcfold''; git push new-origin main 2>&1; Write-Host ''PUSH_DONE''\")",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(npx tsc *)"
     ]
   }
 }
